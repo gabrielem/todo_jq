@@ -13,3 +13,5 @@ a simple TODO list using jquery. For HTML & js course.
 5. GIT init
 6. generate the HTML
 7. PUSH to repo https://github.com/gabrielem/todo_jq
+8. define addItem and rednerItems
+9. add delete item function
