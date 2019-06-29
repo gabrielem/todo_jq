@@ -14,6 +14,9 @@ $( document ).ready(function() {
         addItem();
       }
     });
+    $( "body" ).on( "redesignTodos", function( event ) {
+      renderItems()
+    });
 });
 
 let todos = []
@@ -24,6 +27,21 @@ const addItem = function(e) {
   if (!$('#textItem').val()) {
     alert('You can not insert and empty item!')
   } else {
-      todo.push($('#textItem').val())
+    todos.push($('#textItem').val())
+    $('#textItem').val("")
+    $('#textItem').focus()
+    $( "body").trigger( "redesignTodos", [ "Custom", "Event" ] );
   }
+}
+
+const renderItems = function() {
+  $('#listContainer').html('')
+  $( todos ).each(function( index ) {
+    console.log( index + ": " + todos[index] );
+    const item = '<div class="alert alert-primary todoItem" role="alert">'
+      + todos[index]
+      + '<button type="button" name="button" class="btn btn-danger deleteBtn" onclick="deleteItem(\'' + index + '\')">x</button>'
+      + '</div>'
+    $('#listContainer').append(item)
+  });
 }
