@@ -45,3 +45,17 @@ const renderItems = function() {
     $('#listContainer').append(item)
   });
 }
+
+const removeByIndex = function(array, index){
+    return array.filter(function(elem, _index){
+        return index != _index;
+    });
+}
+
+const deleteItem = function(indexToRemove) {
+  const confirmMsg = confirm('Please confirm you want to delete this item!');
+  if(confirmMsg){
+    todos = removeByIndex(todos, indexToRemove)
+    $( "body").trigger( "redesignTodos", [ "Custom", "Event" ] );
+  }
+}
